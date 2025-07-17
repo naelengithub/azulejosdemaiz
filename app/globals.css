@@ -10,6 +10,7 @@ html {
 :root {
   --background: #f6eee1;
   --foreground: #171717;
+  --test: #f6e;
 }
 
 @media (prefers-color-scheme: dark) {
