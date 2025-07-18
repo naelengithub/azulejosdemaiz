@@ -34,7 +34,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <h3 className="text-xl font-semibold text-blue-800 mb-2">{title}</h3>
       <p className="text-sm text-blue-800 mb-2">{description}</p>
       <p className="text-sm font-semibold text-blue-800 underline hover:cursor-pointer">
-        {linkText} -&gt;
+        {linkText}
       </p>
     </Link>
   </div>

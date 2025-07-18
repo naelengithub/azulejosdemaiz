@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, PanInfo } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -113,6 +113,23 @@ export default function SlidingPuzzleHero() {
     }
   }, [tileSize, total, demoPlayed]);
 
+  // Helpers for dragging
+  const emptyIndex = tiles.findIndex((t) => t === 0);
+  const getNeighbor = (idx: number) => {
+    const tx = idx % cols;
+    const ty = Math.floor(idx / cols);
+    const ex = emptyIndex % cols;
+    const ey = Math.floor(emptyIndex / cols);
+    const dx = ex - tx;
+    const dy = ey - ty;
+    return Math.abs(dx) + Math.abs(dy) === 1 ? { dx, dy } : null;
+  };
+  const swapWithEmpty = (idx: number) => {
+    const t2 = [...tiles];
+    [t2[emptyIndex], t2[idx]] = [t2[idx], t2[emptyIndex]];
+    setTiles(t2);
+  };
+
   // Click logic
   const handleClick = (idx: number, e: React.MouseEvent<HTMLDivElement>) => {
     const empties = tiles
@@ -151,8 +168,6 @@ export default function SlidingPuzzleHero() {
       .filter((i) => i !== -1);
     const tx = idx % cols,
       ty = Math.floor(idx / cols);
-
-    // removed unused left and top
 
     let cur = "default";
     empties.forEach((ei) => {
@@ -210,44 +225,71 @@ export default function SlidingPuzzleHero() {
       >
         {tiles.map(
           (tile, idx) =>
-            tile !== 0 && (
-              <motion.div
-                key={idx}
-                className="absolute rounded overflow-hidden"
-                style={{
-                  width: tileSize - 4,
-                  height: tileSize - 4,
-                  top: Math.floor(idx / cols) * tileSize,
-                  left: (idx % cols) * tileSize,
-                  cursor: cursor[idx] || "default",
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  x: demo && orderMap[idx] === total - 1 ? [0, tileSize, 0] : 0,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 1 + (orderMap[idx] || 0) * 0.35,
-                  x:
-                    demo && orderMap[idx] === total - 1
-                      ? { duration: 1, ease: "easeInOut" }
-                      : undefined,
-                }}
-                onClick={(e) => handleClick(idx, e)}
-                onMouseMove={() => handleMouseMove(idx)}
-                onMouseLeave={() => handleMouseLeave(idx)}
-              >
-                <Image
-                  src={imagePaths[(tile - 1) % imagePaths.length]}
-                  alt="Logo tile"
-                  width={tileSize}
-                  height={tileSize}
-                  className="object-cover w-full h-full bg-amber-50 p-2 rounded-lg"
-                />
-              </motion.div>
-            )
+            tile !== 0 &&
+            (() => {
+              const neighbor = getNeighbor(idx);
+              const axis = neighbor
+                ? Math.abs(neighbor.dx) === 1
+                  ? "x"
+                  : "y"
+                : (false as const);
+
+              return (
+                <motion.div
+                  key={idx}
+                  className="absolute rounded overflow-hidden"
+                  style={{
+                    width: tileSize - 4,
+                    height: tileSize - 4,
+                    top: Math.floor(idx / cols) * tileSize,
+                    left: (idx % cols) * tileSize,
+                    cursor: cursor[idx] || "default",
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    x:
+                      demo && orderMap[idx] === total - 1
+                        ? [0, tileSize, 0]
+                        : 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 1 + (orderMap[idx] || 0) * 0.35,
+                    x:
+                      demo && orderMap[idx] === total - 1
+                        ? { duration: 1, ease: "easeInOut" }
+                        : undefined,
+                  }}
+                  drag={axis}
+                  dragConstraints={{
+                    left: axis === "x" && neighbor!.dx === 1 ? 0 : -tileSize,
+                    right: axis === "x" && neighbor!.dx === -1 ? 0 : tileSize,
+                    top: axis === "y" && neighbor!.dy === 1 ? 0 : -tileSize,
+                    bottom: axis === "y" && neighbor!.dy === -1 ? 0 : tileSize,
+                  }}
+                  dragElastic={0}
+                  onDragEnd={(_e, info: PanInfo) => {
+                    const moved = axis === "x" ? info.offset.x : info.offset.y;
+                    if (Math.abs(moved) > tileSize / 2) {
+                      swapWithEmpty(idx);
+                    }
+                  }}
+                  onClick={(e) => handleClick(idx, e)}
+                  onMouseMove={() => handleMouseMove(idx)}
+                  onMouseLeave={() => handleMouseLeave(idx)}
+                >
+                  <Image
+                    src={imagePaths[(tile - 1) % imagePaths.length]}
+                    alt="Logo tile"
+                    width={tileSize}
+                    height={tileSize}
+                    className="object-cover w-full h-full bg-amber-50 p-2 rounded-lg"
+                  />
+                </motion.div>
+              );
+            })()
         )}
       </div>
     </section>
