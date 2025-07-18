@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           </li>
           <li>
             <Link href="#productos" className="hover:underline font-semibold">
-              Productos
+              Nuestros Productos
             </Link>
           </li>
           <li>
@@ -38,10 +38,11 @@ const Footer: React.FC = () => {
               target="_blank"
               className="hover:underline font-semibold"
             >
-              Contacto
+              Contáctanos &#8599;
             </Link>
           </li>
           <p className="text-sm mt-6 hidden md:block">
+            Azulejos de Maíz 2025 <br />
             Web por{" "}
             <Link href="https://anae.studio" target="_blank" className="italic">
               anae.studio
@@ -67,8 +68,10 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <p className="text-sm mt-6 md:hidden">
+        Azulejos de Maíz 2025
+        <br />
         Web por{" "}
-        <Link href="https://anae.studio" target="_blank">
+        <Link href="https://anae.studio" target="_blank" className="italic">
           anae.studio
         </Link>
         .

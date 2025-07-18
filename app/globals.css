@@ -10,7 +10,6 @@ html {
 :root {
   --background: #f6eee1;
   --foreground: #171717;
-  --test: #f6e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,6 +25,8 @@ html {
   --color-foreground: var(--foreground);
   --color-azulejoBlue: #0d4baf;
   --color-azulejo-lightBlue: #dcebf3;
+  --color-azulejoGolden: #c6a76e;
+  --color-azulejoAccent: #1c979c;
   --font-jost: var(--font-jost);
   --font-philosopher: var(--font-philosopher);
 }

@@ -3,6 +3,7 @@ import FeatureSection from "./components/FeatureSection";
 import Footer from "./components/Footer";
 import GalletasFeature from "./components/GalletasFeature";
 import HeroSection from "./components/HeroSection";
+import Navbar from "./components/Navbar";
 import ProductsSection from "./components/ProductSection";
 import QuoteSection from "./components/QuoteSection";
 import StorySection from "./components/StorySection";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <div className="bg-background">
       <main>
+        <Navbar />
         <HeroSection />
         <GalletasFeature />
         <CookieTypes id="productos" />

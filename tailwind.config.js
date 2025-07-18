@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         azulejo: "var(--azulejo-blue)",
         "azulejo-light": "var(--azulejo-light-blue)",
+        "azulejo-golden": "var(--azulejoGolden)",
       },
       fontFamily: {
         jost: ["var(--font-jost)", "sans-serif"],
