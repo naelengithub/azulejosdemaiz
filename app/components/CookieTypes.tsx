@@ -47,7 +47,7 @@ const cards: ExtendedCardItemProps[] = [
 
 const CookieTypes: React.FC<{ id?: string }> = ({ id }) => {
   return (
-    <section id={id} className="py-12 px-4 md:px-24">
+    <section id={id} className="pt-12 pb-24 px-4 md:px-24">
       <div className="max-w-4xl mx-auto text-center mb-10 text-azulejoBlue">
         <h2 className="text-3xl font-philosopher font-bold text-azulejoBlue sm:text-4xl mb-4">
           Galletas para toda ocasión

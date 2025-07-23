@@ -157,7 +157,7 @@ export default function SlidingGame() {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-azulejoBlue pt-12">
+    <div className="w-screen min-h-screen flex items-center justify-center bg-azulejoBlue pt-12">
       <div
         ref={boardRef}
         className="relative my-4"

@@ -5,7 +5,7 @@ export default function QuoteSection() {
   return (
     <section className="relative max-w-4xl mx-auto px-4 py-12 overflow-hidden">
       {/* Background card */}
-      <div className="bg-[#f2e4cd] rounded-lg p-8 md:p-24 text-center">
+      <div className="bg-azulejoLightGolden rounded-lg p-8 md:p-24 text-center">
         <p className="text-azulejoBlue text-xl md:text-4xl font-philosopher font-medium mb-4">
           “Azulejos de Maíz es una empresa creada por Laura Salas para conectar
           a las personas y sus familias con las tradiciones a través del maíz

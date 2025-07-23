@@ -31,7 +31,10 @@ const Navbar: React.FC = () => {
           className="text-gray-800 focus:outline-none"
           aria-label="Toggle menu"
         >
-          <Bars3Icon className="h-8 w-8 text-azulejoAccent hover:cursor-pointer" />
+          <Bars3Icon
+            className="h-8 w-8 text-azulejoAccent hover:cursor-pointer"
+            strokeWidth={2}
+          />
         </button>
       </div>
 

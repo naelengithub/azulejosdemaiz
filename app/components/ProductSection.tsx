@@ -13,7 +13,7 @@ const products = [
     imageAlt: "Azulejo Cerdito",
     title: "Azulejo Cerdito",
     description:
-      "El regalo perfecto para consentir a quienes más quieres, con sabores que enamoran en cada bocado.",
+      "Inspirado en el tradicional alcancía de barro, este diseño en forma de cerdito es un guiño al cariño, la abundancia y el apapacho. Un regalo entrañable para compartir dulzura en cada mordida.",
     linkText: "Hacer pedido",
     linkHref: `https://wa.me/5215585720802?text=${encodeURIComponent(
       "Hola, me gustaría hacer un pedido del Azulejo Cerdito."
@@ -24,7 +24,7 @@ const products = [
     imageAlt: "Azulejo Maíz",
     title: "Azulejo Maíz",
     description:
-      "El regalo perfecto para consentir a quienes más quieres, con sabores que enamoran en cada bocado.",
+      "El maíz, corazón de nuestra tierra, toma forma en esta galleta como símbolo de origen, alimento y cultura. Una delicia que honra nuestras raíces con cada bocado.",
     linkText: "Comprar galletas",
     linkHref: `https://wa.me/5215585720802?text=${encodeURIComponent(
       "Hola, me gustaría hacer un pedido del Azulejo Maíz."
@@ -34,7 +34,8 @@ const products = [
     imageSrc: "/cookies/azulejo-alfajor.png",
     imageAlt: "Galleta 3",
     title: "Azulejo Alfajor",
-    description: "Con un toque de canela y piloncillo.",
+    description:
+      "Con forma de flor, este alfajor evoca lo festivo y lo artesanal. Su relleno de dulce de leche y su toque de canela y piloncillo lo hacen tan cálido como una celebración en familia.",
     linkText: "Hacer pedido",
     linkHref: `https://wa.me/5215585720802?text=${encodeURIComponent(
       "Hola, me gustaría hacer un pedido del Azulejo Alfajor."
@@ -113,7 +114,7 @@ export default function ProductsSection({ id }: ProductsSectionProps) {
   return (
     <section
       id={id}
-      className="w-full flex flex-col md:pl-12 sm:flex-row my-24 md:my-52"
+      className="w-full flex flex-col md:pl-12 sm:flex-row my-24 md:my-"
     >
       {/* Left static text */}
       <div className="flex-shrink-0 sm:w-1/3 p-4">
@@ -121,9 +122,13 @@ export default function ProductsSection({ id }: ProductsSectionProps) {
           Cada creación, un pedacito de México
         </h2>
         <p className="text-azulejoBlue">
-          En Azulejos del Maíz, cada producto nace con un propósito: compartir
-          la riqueza de nuestra tierra a través de sabores auténticos y diseños
-          que cuentan historias.
+          En Azulejos del Maíz, cada galleta es más que un sabor: es una forma
+          de contar historias. Nuestros diseños se inspiran en figuras
+          emblemáticas de la cultura mexicana —desde el maíz hasta el cerdito
+          del ahorro— y se moldean con cariño para rendir homenaje a nuestras
+          raíces. Cada pieza combina un diseño artesanal con ingredientes
+          auténticos, creando un regalo que deleita tanto por dentro como por
+          fuera.
         </p>
       </div>
 

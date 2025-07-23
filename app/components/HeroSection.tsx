@@ -16,7 +16,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-screen h-screen bg-azulejoBlue flex items-center justify-center overflow-hidden">
+    <section className="relative w-screen bg-azulejoBlue flex items-center justify-center overflow-hidden">
       {/* Center text */}
       <motion.div
         initial={{ opacity: 0 }}
