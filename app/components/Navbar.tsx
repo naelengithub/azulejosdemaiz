@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
         {isOpen && (
           <button
             onClick={toggleMenu}
-            className="absolute top-4 right-4 focus:outline-none"
+            className="absolute top-4 right-4 focus:outline-none hover:cursor-pointer"
             aria-label="Close menu"
           >
             <XMarkIcon className="h-8 w-8 text-azulejoAccent" />

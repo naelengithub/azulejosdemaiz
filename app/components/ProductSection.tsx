@@ -114,7 +114,7 @@ export default function ProductsSection({ id }: ProductsSectionProps) {
   return (
     <section
       id={id}
-      className="w-full flex flex-col md:pl-12 sm:flex-row my-24 md:my-"
+      className="w-full flex flex-col md:pl-12 sm:flex-row py-24"
     >
       {/* Left static text */}
       <div className="flex-shrink-0 sm:w-1/3 p-4">
